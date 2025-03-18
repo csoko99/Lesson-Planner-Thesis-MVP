@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óraterv készítő webes applikáció</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=save" />
+    <script src="exportPdf.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="form-container">
+        <h2>Óraterv készítő webes applikáció</h2>
+        <form>
+            <div class="form-group">
+                <label for="teacher-name">A pedagógus neve:</label>
+                <input type="text" id="teacher-name" name="teacher-name" required>
+            </div>
+            <div class="form-group">
+                <label for="subject-area">Műveltségi terület:</label>
+                <input type="text" id="subject-area" name="subject-area" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Tantárgy:</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Válassz tantárgyat...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="class">Osztály:</label>
+                <input type="text" id="class" name="class" required>
+            </div>
+            <div class="form-group">
+                <label for="tankonyv">Tankönyv:</label>
+                <select id="tankonyv" name="tankonyv" required>
+                    <option value="">Válassz tankönyvet...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tema">Az óra témája:</label>
+                <select id="tema" name="tema" required>
+                    <option value="">Válassz témát...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lesson-goals">Az óra cél- és feladatrendszere:</label>
+                <textarea id="lesson-goals" name="lesson-goals" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" id="add-goals">Célok hozzáadása</button>
+            </div>
+            <div class="form-group">
+                <label for="didactic-tasks">Az óra didaktikai feladatai:</label>
+                <textarea id="didactic-tasks" name="didactic-tasks" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" id="add-didactic-tasks">Didaktikai feladatok hozzáadása</button>
+            </div>
+            <div class="form-group">
+                <label for="subject-connections">Tantárgyi kapcsolatok:</label>
+                <textarea id="subject-connections" name="subject-connections" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" id="add-subject-connections">Tantárgyi kapcsolatok hozzáadása</button>
+            </div>
+            <div class="form-group">
+                <label for="resources">Felhasznált források:</label>
+                <textarea id="resources" name="resources" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="date">Dátum:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <h4>Didaktikai célok:</h4>
+                <div class="form-checkbox-container">
+                    <span class="form-span">
+                        <b>Új ismereteket kialakító és feldolgozó tanóra (tanulás)</b>
+                    </span>
+                    <div class="form-checkbox">
+                        <input type="checkbox" name="didaktikai_celok" value="1">
+                    </div>
+                </div>
+                <div class="form-checkbox-container">
+                    <span class="form-span">
+                        <b>Az előzőekben feldolgozott ismeretek gyakorlati alkalmazását elősegítő tanóra (rögzítés)</b>
+                    </span>
+                    <div class="form-checkbox">
+                        <input type="checkbox" name="didaktikai_celok" value="2">
+                    </div>
+                    
+                </div>
+                <div class="form-checkbox-container">
+                    <span class="form-span">
+                       <b>A megtanult ismereteket elmélyítő és ismétlő óra (ismétlés)</b>
+                    </span>
+                    <div class="form-checkbox">
+                        <input type="checkbox" name="didaktikai_celok" value="3">
+                    </div>
+                </div>
+                <div class="form-checkbox-container">
+                    <span class="form-span">
+                        <b>Az elsajátított ismereteket ellenőrző és értékelő óra (számonkérés)</b>
+                    </span>
+                    <div class="form-checkbox">
+                        <input type="checkbox" name="didaktikai_celok" value="4">
+                    </div>
+                    
+                </div>
+            </div>
+           
+        </form>
+         <button id="generate-lesson-plan" class="actionButtons">Óraterv generálása</button>
+    </div>
+
+    
+
+    <div id="lesson-plan-table">
+        <h3>Óraterv</h3>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Időkeret</th>
+                    <th>Az óra menete</th>
+                    <th>Módszerek</th>
+                    <th>Tanulói munkaformák</th>
+                    <th>Eszközök</th>
+                    <th>Megjegyzések</th>
+                    <th>Törlés</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+            <tr>
+                <td style="width: 100%;">I.Ráhangolódás</td>
+            </tr>
+            <tr>
+                <td><div><input type="number"><span>p</span></div></td>
+                <td><textarea name="" id="" placeholder="Motiváció"></textarea></td>
+                <td><div><textarea id="rahangolodas-modszerek"></textarea><button id="rahangolodas-addModszerButton">+</button></div></td>
+                <td><div><textarea id="rahangolodas-munkaformak"></textarea><button id="rahangolodas-addMunkaformaButton">+</button></div></td>
+                <td><div><textarea id="rahangolodas-eszkozok"></textarea><button id="rahangolodas-addEszkozButton">+</button></div></td>
+                <td><textarea name="" id="" placeholder="Addj megjegyzést"></textarea></td>
+            </tr>
+            <tr>
+                <td style="width: 100%;">II.Fő rész</td>
+            </tr>
+            </tbody>
+            <tbody id="main">
+            </tbody>
+            <tbody>
+                <tr>
+                    <td style="width: 100%;">II.Befejező rész</td>
+                </tr>
+                <tr>
+                    <td><div><input type="number"><span>p</span></div></td>
+                    <td><textarea name="" id="" placeholder="Összefoglalás"></textarea></td>
+                    <td><div><textarea id="befejezo-modszerek"></textarea><button id="befejezo-addModszerButton">+</button></div></td>
+                    <td><div><textarea id="befejezo-munkaformak"></textarea><button id="befejezo-addMunkaformaButton">+</button></div></td>
+                    <td><div><textarea id="befejezo-eszkozok"></textarea><button id="befejezo-addEszkozButton">+</button></div></td>
+                    <td><textarea name="" id="" placeholder="Addj megjegyzést"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="buttonContainer">
+        <button id="add-task-button" class="actionButtons">Tankönyvi feladat hozzáadása</button>
+        <button id="add-custom-task" class="actionButtons">Egyéni feladat hozzáadása</button>
+        <button type="button" class="actionButtons" onclick="exportPDF()">PDF Exportálás</button>
+    </div>
+    <div id="add-task-modal" class="modal" style="display:none;">
+        <h3>Válasszon feladatot:</h3>
+        <select id="add-task-select" multiple size="8"></select>
+        <div class="button-container">
+            <button id="save-task" class="save">Hozzáadás</button>
+            <button id="close-task-modal" class="close">Mégse</button>
+        </div>
+    </div>
+
+    <div id="mellekletek" style="display:none">
+        <h2>Mellékletek</h2>
+        <div id="mellekletek-kepek"></div>
+    </div>
+
+    <div id="goal-modal" class="modal" style="display:none;">
+        <h3>Válassza ki a célokat:</h3>
+        <div id="goal-list" class="modal-list"></div>
+        <button id="save-goals" class="save">Mentés</button>
+        <button id="close-modal" class="close">Mégse</button>
+    </div>
+
+    <div id="didactic-tasks-modal" class="modal" style="display:none;">
+        <h3>Válassza ki a didaktikai feladatokat:</h3>
+        <div id="didactic-tasks-list" class="modal-list"></div>
+        <button id="save-didactic-tasks" class="save">Mentés</button>
+        <button id="close-didactic-modal" class="close">Mégse</button>
+    </div>
+
+    <div id="subject-connections-modal" class="modal" style="display:none;">
+        <h3>Válassza ki a tantárgyi kapcsolatokat:</h3>
+        <div id="subject-connections-list" class="modal-list"></div>
+        <button id="save-subject-connections" class="save">Mentés</button>
+        <button id="close-subject-connections-modal" class="close">Mégse</button>
+    </div>
+
+    <div id="modszerek-modal" class="modal" style="display:none;">
+        <h3>Válassza ki a szükséges módszert/módszereket:</h3>
+        <div id="modszerek-list" class="modal-list"></div>
+        <button id="save-modszerek" class="save">Mentés</button>
+        <button id="close-modszerek-modal" class="close">Mégse</button>
+    </div>
+
+    <div id="munkaformak-modal" class="modal" style="display:none;">
+        <h3>Válassza ki a szükséges módszert/módszereket:</h3>
+        <div id="munkaformak-list" class="modal-list"></div>
+        <button id="save-munkaformak" class="save">Mentés</button>
+        <button id="close-munkaformak-modal" class="close">Mégse</button>
+    </div>
+
+    <div id="eszkozok-modal" class="modal" style="display:none;">
+        <h3>Válassza ki a szükséges módszert/módszereket:</h3>
+        <div id="eszkozok-list" class="modal-list"></div>
+        <button id="save-eszkozok" class="save">Mentés</button>
+        <button id="close-eszkozok-modal" class="close">Mégse</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

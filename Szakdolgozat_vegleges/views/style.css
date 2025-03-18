@@ -1,0 +1,241 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.form-group input, .form-group textarea, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #45a049;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    width: 400px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+
+.modal-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.modal-list li {
+    margin-bottom: 10px;
+}
+
+#lesson-plan-table {
+    display: none;
+    margin: 0 auto;
+    padding: 2em;
+    overflow-x: auto;
+    width: 98%;
+}
+
+.styled-table {
+    width: 100%;
+    margin-left: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    table-layout: fixed;
+}
+
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.styled-table td div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 15px;
+}
+
+.styled-table td textarea {
+    flex: 1;
+    height: 60px;
+    padding: 8px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.styled-table td button {
+    margin-left: 0.5em;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.styled-table td button:hover {
+    background-color: #45a049;
+}
+
+.styled-table td div#idokeretContentContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.styled-table td input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.styled-table td span {
+    font-size: 14px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#add-task-select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .styled-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+.actionButtons {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actionButtons:hover {
+    background-color: #45a049;
+}
+
+.actionButtons:active {
+    transform: translateY(1px);
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 15px;
+}
+
+.form-checkbox-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form-checkbox-container input[type="checkbox"] {
+    width: 2rem;
+}
+
+.form-span {
+    width: 70%;
+}
+
+.form-checkbox{
+    width: 30%;
+}
