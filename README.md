@@ -1,5 +1,6 @@
 Lesson Plan Generator – MVP Web Application
 
+ℹ️ About
 This project is a Minimum Viable Product (MVP) created as part of my thesis research. It represents a prototype of a web-based lesson plan creation tool designed to support educators in building structured and organized lesson plans efficiently.
 
 ⚠️ Note: This application was developed solely for academic research purposes and is not intended for production use.
